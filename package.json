@@ -3,21 +3,43 @@
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
+    "start": "TAMAGUI_TARGET=native expo start -c",
+    "android": "TAMAGUI_TARGET=native expo start --android",
+    "ios": "TAMAGUI_TARGET=native expo start --ios",
+    "web": "TAMAGUI_TARGET=native expo start --web",
+    "lint": "eslint ."
   },
   "dependencies": {
+    "@tamagui/animations-react-native": "^1.53.2",
+    "@tamagui/config": "^1.53.2",
+    "@tamagui/font-inter": "^1.53.2",
+    "@tamagui/react-native-media-driver": "^1.53.2",
+    "@tamagui/shorthands": "^1.53.2",
+    "@tamagui/theme-base": "^1.53.2",
+    "@tamagui/themes": "^1.53.2",
+    "babel-plugin-transform-inline-environment-variables": "^0.4.4",
     "expo": "~49.0.8",
+    "expo-font": "^11.4.0",
     "expo-status-bar": "~1.6.0",
     "react": "18.2.0",
-    "react-native": "0.72.4"
+    "react-dom": "^18.2.0",
+    "react-native": "0.72.4",
+    "react-native-reanimated": "~3.3.0",
+    "react-native-web": "^0.19.7",
+    "tamagui": "^1.53.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@types/react": "~18.0.14",
+    "@typescript-eslint/eslint-plugin": "^6.4.1",
+    "@typescript-eslint/parser": "^6.4.1",
+    "eslint": "^8.47.0",
+    "eslint-config-universe": "^12.0.0",
+    "prettier": "^3.0.2",
     "typescript": "^5.1.3"
   },
-  "private": true
+  "private": true,
+  "eslintConfig": {
+    "extends": "universe/native"
+  }
 }
