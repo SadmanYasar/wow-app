@@ -1,34 +1,52 @@
-import { Feather } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
+import { useColorScheme } from 'react-native';
 import { useTheme } from 'tamagui';
 
 export default function TabLayout() {
   const theme = useTheme();
+  const scheme = useColorScheme();
 
   return (
     <Tabs
+      initialRouteName="home"
       screenOptions={{
-        tabBarActiveTintColor: theme.gray2.val,
+        tabBarActiveTintColor: theme.color.val,
         tabBarStyle: {
-          height: 70,
+          height: 52,
           borderWidth: 1,
-          borderRadius: 50,
           borderColor: theme.gray2.val,
           borderTopColor: theme.gray2.val,
           backgroundColor: theme.background.val,
         },
-        tabBarLabelStyle: {
-          fontSize: 12,
-          fontWeight: 'bold',
-          marginBottom: 10,
-        },
-      }}>
+        headerShown: false,
+        tabBarShowLabel: false,
+      }}
+    >
       <Tabs.Screen
         name="home"
         options={{
           title: 'Home',
-          headerShown: false,
-          tabBarIcon: () => <Feather name="home" size={24} color="black" />,
+          tabBarIcon: ({ color, focused }) => {
+            return focused ? (
+              <Ionicons name="home-sharp" color={color} size={30} />
+            ) : (
+              <Ionicons name="home-outline" color={color} size={30} />
+            );
+          },
+        }}
+      />
+      <Tabs.Screen
+        name="settings"
+        options={{
+          title: 'Settings',
+          tabBarIcon: ({ color, focused }) => {
+            return focused ? (
+              <Ionicons name="settings-sharp" color={color} size={30} />
+            ) : (
+              <Ionicons name="settings-outline" color={color} size={30} />
+            );
+          },
         }}
       />
     </Tabs>

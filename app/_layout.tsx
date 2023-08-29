@@ -1,34 +1,13 @@
 import { useFonts } from 'expo-font';
-import { Stack, SplashScreen } from 'expo-router';
-
-// export default function StackLayout() {
-//   return (
-//     <>
-//       <Stack>
-//         <Stack.Screen
-//           name="(tabs)"
-//           options={{
-//             headerShown: false,
-//           }}
-//         />
-//       </Stack>
-//     </>
-//   );
-// }
-
-import { Suspense } from 'react';
+import { SplashScreen, Stack } from 'expo-router';
+import { Suspense, useEffect } from 'react';
 import { useColorScheme } from 'react-native';
-import {
-  Button,
-  Paragraph,
-  TamaguiProvider,
-  Theme,
-  YStack,
-  Text,
-} from 'tamagui';
+import { TamaguiProvider, Theme, Text } from 'tamagui';
 
 import { MySafeAreaView } from '../components/MySafeAreaView';
 import config from '../tamagui.config';
+
+SplashScreen.preventAutoHideAsync();
 
 export default function StackLayout() {
   const colorScheme = useColorScheme();
@@ -37,6 +16,13 @@ export default function StackLayout() {
 
     InterBold: require('@tamagui/font-inter/otf/Inter-Bold.otf'),
   });
+
+  useEffect(() => {
+    if (loaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded]);
+
   if (!loaded) {
     return null;
   }
@@ -45,13 +31,14 @@ export default function StackLayout() {
       <Suspense fallback={<Text>Loading...</Text>}>
         <Theme name={colorScheme === 'dark' ? 'dark' : 'light'}>
           <MySafeAreaView>
-            <YStack f={1} jc="center" ai="center" backgroundColor="$background">
-              <Paragraph color="$color" jc="center">
-                {colorScheme} hello
-              </Paragraph>
-              <Button>Button</Button>
-              {/* <StatusBar style="auto" /> */}
-            </YStack>
+            <Stack>
+              <Stack.Screen
+                name="(tabs)"
+                options={{
+                  headerShown: false,
+                }}
+              />
+            </Stack>
           </MySafeAreaView>
         </Theme>
       </Suspense>

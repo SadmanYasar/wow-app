@@ -1,7 +1,7 @@
 import { useColorScheme } from 'react-native';
 import { Button, Paragraph, YStack } from 'tamagui';
 
-export default function Home() {
+export default function Settings() {
   const colorScheme = useColorScheme();
 
   return (
@@ -9,7 +9,7 @@ export default function Home() {
       <Paragraph color="$color" jc="center">
         {colorScheme} hello
       </Paragraph>
-      <Button>Button</Button>
+      <Button>Settings</Button>
       {/* <StatusBar style="auto" /> */}
     </YStack>
   );
