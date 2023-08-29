@@ -6,7 +6,8 @@
     "android": "TAMAGUI_TARGET=native expo start --android",
     "ios": "TAMAGUI_TARGET=native expo start --ios",
     "web": "TAMAGUI_TARGET=native expo start --web",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@tamagui/animations-react-native": "^1.53.2",
@@ -44,7 +45,7 @@
     "@typescript-eslint/parser": "^6.4.1",
     "eslint": "^8.47.0",
     "eslint-config-universe": "^12.0.0",
-    "husky": "^8.0.3",
+    "husky": "^8.0.0",
     "lint-staged": "^14.0.1",
     "prettier": "^3.0.2",
     "typescript": "^5.1.3"
@@ -53,21 +54,5 @@
   "eslintConfig": {
     "extends": "universe/native"
   },
-  "main": "expo-router/entry",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{ts,tsx}": [
-      "prettier --write",
-      "eslint --fix",
-      "git add"
-    ],
-    "*.{html,css,less,ejs}": [
-      "prettier --write",
-      "git add"
-    ]
-  }
+  "main": "expo-router/entry"
 }
