@@ -2,6 +2,7 @@ module.exports = {
   expo: {
     name: 'wow-app-sqlite',
     slug: 'wow-app-sqlite',
+    scheme: 'your-app-scheme',
     version: '1.0.0',
     orientation: 'portrait',
     icon: './assets/icon.png',
@@ -24,5 +25,14 @@ module.exports = {
     web: {
       favicon: './assets/favicon.png',
     },
+    plugins: [
+      'expo-router',
+      [
+        'expo-contacts',
+        {
+          contactsPermission: 'Allow $(PRODUCT_NAME) to access your contacts.',
+        },
+      ],
+    ],
   },
 };

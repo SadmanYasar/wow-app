@@ -1,12 +1,11 @@
 import { useFonts } from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
-import { Suspense } from 'react';
-import { useColorScheme, Text } from 'react-native';
-import { Button, Paragraph, Spacer, TamaguiProvider, Theme, YStack } from 'tamagui';
+import { useColorScheme } from 'react-native';
+import { Button, Paragraph, TamaguiProvider, Theme, YStack } from 'tamagui';
 
-import config from './tamagui.config';
+import config from '../../tamagui.config';
 
-export default function App() {
+export default function Home() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
     Inter: require('@tamagui/font-inter/otf/Inter-Medium.otf'),
