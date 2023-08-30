@@ -12,6 +12,7 @@
 - [🎯User Stories:](#user-stories)
 - [✅Backlog](#backlog)
 - [⚙Tech Stack](#tech-stack)
+- [Learnings From this Project](#learnings-from-this-project)
 
 </details>
 
@@ -39,3 +40,6 @@
 - Expo
 - Typescript
 - Expo Router / React Navigation (Depending on backend)
+
+## Learnings From this Project
+- Custom Hooks are not Redux/Context!
