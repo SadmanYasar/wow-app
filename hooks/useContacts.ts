@@ -6,10 +6,11 @@ import utils from '../utils';
 export default function useContacts() {
 	const [contacts, setContacts] = useState<Contacts.Contact[]>([]);
 
-	const importContacts = async () => {
+	const importContacts = async (): Promise<void> => {
 		try {
-			const { status } = await Contacts.requestPermissionsAsync();
-			if (status === 'granted') {
+			await Contacts.requestPermissionsAsync();
+			const hasPermission = await utils.getPermission();
+			if (hasPermission) {
 				const { data } = await Contacts.getContactsAsync({
 					fields: [
 						Contacts.Fields.Name,
@@ -19,9 +20,10 @@ export default function useContacts() {
 
 				if (data.length > 0) {
 					const contact = data[150];
+					console.log('phone', contact.phoneNumbers);
 					setContacts([contact]);
 					// remember to remove this
-					console.log('useContacts', contacts.length);
+					console.log('useContacts', contacts);
 				}
 			}
 		} catch (error) {

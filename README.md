@@ -43,3 +43,4 @@
 
 ## Learnings From this Project
 - Custom Hooks are not Redux/Context!
+- Expo Contacts.requestPermissionsAsync() displays permission dialog only once, if you want to display it again you need to go to settings and enable it manually
